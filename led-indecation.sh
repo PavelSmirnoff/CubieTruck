@@ -7,6 +7,11 @@ declare -i br1=0;
 declare -i br2=0;
 declare -i sec_now=0;
 declare -i msec_now=0;
+
+#Включение синего светодиода при работе с диском:
+echo disk-activity > /sys/devices/platform/leds/leds/cubietruck:blue:usr/trigger
+
+
 #Вывод информации о состоянии батареи
 cat /sys/class/power_supply/axp20x-battery/uevent;
 
