@@ -1,2 +1,2 @@
 # CubieTruck
-Разные эксперементы с одноплатным ПК CubieTruck (CubieBoard 3)
+Разные эксперименты с одноплатным ПК CubieTruck (CubieBoard 3)
