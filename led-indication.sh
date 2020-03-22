@@ -41,24 +41,15 @@ cat /sys/class/power_supply/axp20x-battery/status;
 #	echo "$sec_now $msec_now $br $br1 $br2";
 
 	if [[ $bat_compacity -lt $bat_min_ust ]]; then
-        	echo $br > /sys/devices/platform/leds/leds/cubietruck:orange:usr/brightness
+        	echo $br > /sys/devices/platform/leds/leds/cubietruck:orange:usr/brightness;
         	if [[ $bat_compacity -le $bat_min_ust-10 ]] && [ "$bat_status" != "Charging" ]; then
                 	#shutdown -h now
-                	echo "Пора выключать кубик"
+                	echo "Пора выключать кубик";
         	fi
 	fi
 
+	if [[ $bat_compacity -gt 98 ]]; then
+		echo 0 > /sys/devices/platform/leds/leds/cubietruck:orange:usr/brightness;
+	fi
 done
-
-#Моргание оранжевым пока идет зарядка
-#declare -i i=0;
-#declare -i j=0;
-#while [ "$bat_status" == "Charging" ]; do
-#        i=i+1
-#        j=i%2
-#        echo "light $j"
-#        echo $j > /sys/devices/platform/leds/leds/cubietruck:orange:usr/brightness
-#        sleep 0.5
-#done
-#        echo "done!";
 
